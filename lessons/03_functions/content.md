@@ -12,9 +12,22 @@ function add( a, b ) {
 
 var res = add(17,4);
 
+### Vordefinierte Funktionen
+
+Vordefinerte Top-Level Funktionen von JavaScript:
+
+* eval
+* isFinite
+* isNaN
+* parseInt and parseFloat
+* Number and String      ( schon wieder , sic *g*)
+* encodeURI, decodeURI, encodeURIComponent, and decodeURIComponent (all available with Javascript 1.5 and later).
+
+(Liste kopiert aus dem [MDN](https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Functions#Predefined_functions) )
+
 ### Funktionen == Objekte
 
-Dabei ist die Funktionsdefinition in JavaScript ein Ausdruck! Erzeugt wird ein Funktionsobjekt.
+Die Funktionsdefinition in JavaScript ist ein Ausdruck! Erzeugt wird ein Funktionsobjekt.
 
 Daraus ergibt sich eine alternative Syntax, da der Funktionsname damit ebenfalls überflüssig ist.
 
@@ -65,6 +78,3 @@ function sum () {
     var summe = 0;
     return arguments.forEach( function(val) { summe += val });
 }
-
-
-
