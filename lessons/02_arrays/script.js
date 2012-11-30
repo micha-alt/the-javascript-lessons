@@ -2,8 +2,6 @@
  *
  */
 
-var console = (typeof console === 'undefined' ) ? this : console;
-
 var primes = [ 2, 3, 5, 7, 11, 13 ];
 
 console.log(primes);
