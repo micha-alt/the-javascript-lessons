@@ -12,6 +12,8 @@ Zwei Vorbemerkungen zum Verständnis von Closures:
 
       test = 10;                    // BAD, weil globale var
 
+                                    // (hier aber nur zur Abgrenzung (siehe summe in addToSumme)
+
       var summe = 0;                // lokale Var
 
       function addToSumme( val ) {

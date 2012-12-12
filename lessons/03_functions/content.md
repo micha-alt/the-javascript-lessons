@@ -4,13 +4,15 @@ Die wichtigsten Aspekte zu JavaScript Funktionen:
 
 ### Definition:
 
-function add( a, b ) {
-    return a + b;
-}
+    function add( a, b ) {
+
+        return a + b;
+
+    }
 
 ### Aufruf:
 
-var res = add(17,4);
+    var res = add(17,4);
 
 ### Vordefinierte Funktionen
 
@@ -31,22 +33,26 @@ Die Funktionsdefinition in JavaScript ist ein Ausdruck! Erzeugt wird ein Funktio
 
 Daraus ergibt sich eine alternative Syntax, da der Funktionsname damit ebenfalls überflüssig ist.
 
-var sub = function (a,b) {
-    return a - b;
-};
+    var sub = function (a,b) {
 
-console.log(sub(21,4));
+        return a - b;
+
+    };
+
+    console.log(sub(21,4));
 
 ### lokale Variablen - Funktions-Scope
 
 Variablen, die innerhalb einer Funktion - mit var(!) - deklariert werden, sind lokale Variablen;
 sie haben "Funktions-Scope", bzw. sind nur im Context der Ausführung dieser Funktion sichtbar.
 
-Und es lassen sich private Blöcke simulieren:
+Und es lassen sich private Blöcke simulieren (Anonyme Funktion, die sofort ausgeführt wird):
 
-(function () {
-    var lokal = 42;
-})();
+    (function () {
+
+        var lokal = 42;
+
+    })();
 
 Zum Abschluss drei Aspekte, die wohl langsam die Dynamik von JavaScript erahnen lassen:
 
@@ -55,7 +61,7 @@ Zum Abschluss drei Aspekte, die wohl langsam die Dynamik von JavaScript erahnen 
 Die obige Andeutung, dass Funktionen Objekte und First-Class-Citizens sind, kann ich wie folgt
 noch stärker "beweisen":
 
-var mul = new Function('a','b','return a*b');
+    var mul = new Function('a','b','return a*b');
 
 ### Apply
 
@@ -65,7 +71,7 @@ var countPar = mul.length;  // Anzahl formaler Parameter
 
 Und zuletzt gibt es auch einen Invoke-Mechanismus:
 
-console.log(add.apply(this, [ 23, 19 ]));
+    console.log(add.apply(this, [ 23, 19 ]));
 
 Zu dem ersten Argument this etwas später.
 
@@ -74,7 +80,16 @@ Zu dem ersten Argument this etwas später.
 Die benannten formalen Funktionsparameter können in JavaScript weggelasssen werden,
 innerhalb jeder Funktion steht ein arguments-Objekt mit Array-Charakter zur Verfügung.
 
-function sum () {
-    var summe = 0;
-    return arguments.forEach( function(val) { summe += val });
-}
+    function sum () {
+
+        var summe = 0;
+
+        for( i=0; i<arguments.length; i++) {
+
+            summe += arguments[i];
+
+        }
+
+        return summe;
+
+    }

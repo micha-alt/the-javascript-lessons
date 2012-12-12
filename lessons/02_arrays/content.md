@@ -2,7 +2,7 @@
 
 Arrays können in JavaScript ebenfalls literal definiert werden.
 
-var primes = [ 2, 3, 5, 7, 11, 13 ];
+    var primes = [ 2, 3, 5, 7, 11, 13 ];
 
 Arrays sind allerdings schon Objekte, können also ebenso über einen
 Konstruktor-Aufruf erzeugt werden. Und verfügen dementsprechen über
@@ -23,6 +23,6 @@ Fragezeichen?
 
 Beachte:
 
-console.log( 5 == new Number(5));
+    console.log( 5 == new Number(5));
 
-console.log( 5 === new Number(5));
+    console.log( 5 === new Number(5));
