@@ -6,7 +6,7 @@
 
     http.open('get','content.md');
     http.onreadystatechange = function() {
-        if( http.readyState == 4) {
+        if( http.readyState === 4) {
             var response = http.responseText;
             var elt = document.getElementById('page-main');
             elt.innerHTML = markdown.toHTML(response);
