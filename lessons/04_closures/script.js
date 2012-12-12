@@ -18,30 +18,55 @@ function sum( array ) {
 
 console.log("Summe von 10, 20 und 30", sum( [10, 20, 30] ));
 
-function iterator( array ) {
-  
-  var ix = 0;
-  
-  var next = function() {
-    if( ix < array.length ) {
-      return array[ix++];
-    } else {
-      return null;
+function closureCreation(arg1){
+
+    var localVar = "Ergebnis: ";
+
+    function theClosure(innerArg){
+
+        return localVar + (innerArg * arg1);
+
     }
-  };
-    
-  return next;
+
+    return theClosure;
+
 }
 
-var it = iterator( [1,2,3,4] );
-console.log(it());
-console.log(it());
+var globalVar = closureCreation(2);
 
-var it2 = iterator( [1,2,3,4] );
+globalVar(4);
 
-while( it2() != null ) {
-  console.log(it2());   
+var vielfacheVonDrei = closureCreation(3);
+
+vielfacheVonDrei(7);
+
+
+function callLater(attr, value){
+    /* Return a reference to an anonymous inner function created
+     with a function expression:-
+     */
+    return (function(elt){
+        /* This inner function is to be executed with - setTimeout
+         - and when it is executed it can read, and act upon, the
+         parameters passed to the outer function:-
+         */
+        elt.style[attr] = value;
+    });
 }
 
-console.log(it());
-console.log(it());
+
+/* Call the function that will return a reference to the inner function
+ object created in its execution context. Passing the parameters that
+ the inner function will use when it is eventually executed as
+ arguments to the outer function. The returned reference to the inner
+ function object is assigned to a local variable:-
+ */
+var hide = callLater("display", "none");
+var makeBlue = callLater('backgroundColor','#4285F4');
+
+/* Call the setTimeout function, passing the reference to the inner
+ function assigned to the - functRef - variable as the first argument:-
+ */
+var header = document.getElementById('page-header');
+
+window.setTimeout('makeBlue(header)', 2000);
