@@ -93,3 +93,14 @@ innerhalb jeder Funktion steht ein arguments-Objekt mit Array-Charakter zur Verf
         return summe;
 
     }
+
+### Kontext, Scope
+
+Funktionen werden immer in einem definierten Kontext ausgeführt. Dieser definiert
+exakt (nach Spezifikation) welche Umgebung unsere Funktion *sieht*.
+
+Im Normalfall ist dies zum Beispiel der globale Kontext:
+siehe [ECMA Script](http://es5.github.com/#x10.2.3)
+
+Allerdings erhalten Funktionen, die über den Function-Konstruktor erstellt werden,
+diesen nicht.
