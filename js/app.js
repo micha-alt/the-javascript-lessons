@@ -16,3 +16,10 @@
 
 })();
 
+// console.log umbiegen zur besseren Übersicht
+//if( console.log) {
+//    var original = console.log;
+//    console.log = function() {
+//       original('Log', arguments);
+//    };
+//}
