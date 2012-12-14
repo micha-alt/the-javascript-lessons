@@ -56,3 +56,37 @@ Product.prototype.currency = '$';
 log(p2);  // Achtung, siehe Ausgabe
 log(p3);
 
+// folgende Methode geht schief
+Customer.prototype.email = "";
+Customer.prototype.isValid = function () {
+
+    // innere Funktion! Keine Methode!
+    function checkEmail() {
+        return this.email.match(/^\w+@\w+\.\w{2,4}$/);
+    }
+
+    // let's make a closure
+    var that = this;    // oft auch Variablenname self
+    function checkMyEmail() {
+        return that.email.match(/^\w+@\w+(\.\w{2,4})?$/);
+    }
+
+    if(
+        this.firstname && this.firstname.length > 0
+        && this.lastname && this.lastname.length > 0
+        && checkMyEmail()
+      )
+        return true;
+    else
+        return false;
+}
+
+var c2 = new Customer();
+c2.firstname = "Klaus";
+c2.lastname = "Lage";
+c2.email = "klaus@lage.de";
+
+log(c2);
+log(c2.isValid());
+
+

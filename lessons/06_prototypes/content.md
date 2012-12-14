@@ -1,6 +1,9 @@
 ## Prototypen
 
-Wie wird nun in JavaScript Vererbung realisiert?
+Wie wird nun in JavaScript Vererbung realisiert? Dazu zunächst eine
+gesonderte Betrachtung des sogenannten Prototyps.
+
+### Der Prototyp
 
 Zur Einführung betrachten wir nochmal folgenden bekannten Code. Nach Konvention
 haben wir eine Konstruktor-Funktion, Funktionen in JavaScript sind ebenso Objekte,
@@ -65,4 +68,16 @@ hinterher angelegt)
 die geänderte Eigenschaft war auf den Objekten schon explizit gesetzt?
 
 Bitte versuchen Sie sich selbst an der Lösung. Tipp: interne Objekt-Property `hasOwnProperty`
+
+### Methoden und Funktionen
+
+An dieser Stelle sei nochmal auf eine Besonderheit der Spezifikation im
+Zusammenhang mit Funktionen hingewiesen. Nochmal die Definition: *eine Methode
+ist eine Funktion die ein Wert einer Eigenschaft ist*. Ein wesentlicher
+Unterschied zw. Funktion und Methode ist (s.o.) die `this`-Referenz.
+
+In der Funktion zeigt `this` auf das globale Objekt (z.B. `window` im Browser),
+ in der Methode auf das Objekt selbst (wie in Java ...). Demzufolge geht
+ folgender Code schief:
+
 
