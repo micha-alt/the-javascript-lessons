@@ -4,12 +4,13 @@
 
 var primes = [ 2, 3, 5, 7, 11, 13 ];
 
-console.log(primes);
-console.log(typeof primes);
+log(primes);
+log(typeof primes);
 
-var fibos =  new Array(1,2,3,5,8,13);
+var fibos =  new Array(0,1,1,2,3,5,8);
 
-console.log(fibos);
-console.log(typeof fibos);
+log(fibos);
+log(typeof fibos);
 
-console.log(fibos.push(21));
+log(fibos.push(13));
+

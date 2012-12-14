@@ -16,8 +16,8 @@ function sum () {
     return summe;
 };
 
-console.log("Ergebnis:",sum( 1,2,3));
+log("Ergebnis:",sum( 1,2,3));
 
-console.log(add.length);
-console.log(add.apply(this, [ 23, 19 ]));
+log(add.length);
+log(add.apply(this, [ 23, 19 ]));
 

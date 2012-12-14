@@ -8,4 +8,4 @@ Short tutorial on the JavaScript essentials.
 2. Arrays
 3. Functions
 4. Closures
-5. Objects - Part 1
+5. Objects

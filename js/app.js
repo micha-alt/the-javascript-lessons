@@ -23,3 +23,24 @@
 //       original('Log', arguments);
 //    };
 //}
+
+// Weiche für jsFiddle bzw Html-Ausgabe
+(function(){
+
+    this.log = function() {
+
+        var output = document.getElementById('output');
+
+        if( output !== null ) {
+            var i, msg = [];
+            for (i = 0; i < arguments.length; i++) {
+                msg.push(arguments[i]);
+            }
+            output.innerHTML += msg.join(' ') + "\n";
+        } else {
+            this.console.log.apply(this,arguments);
+            this.log = this.console.log;
+        }
+    };
+
+})();

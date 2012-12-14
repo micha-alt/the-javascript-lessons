@@ -2,6 +2,7 @@
  *
  */
 
+// Keine Closure hier, nur zum Vergleich
 function sum( array ) {
 
   test = 10;                    // BAD, weil globale var
@@ -16,7 +17,7 @@ function sum( array ) {
   return summe;
 }
 
-console.log("Summe von 10, 20 und 30", sum( [10, 20, 30] ));
+log("Summe von 10, 20 und 30", sum( [10, 20, 30] ));
 
 function closureCreation(arg1){
 
@@ -34,11 +35,11 @@ function closureCreation(arg1){
 
 var globalVar = closureCreation(2);
 
-globalVar(4);
+log(globalVar(4));
 
 var vielfacheVonDrei = closureCreation(3);
 
-vielfacheVonDrei(7);
+log(vielfacheVonDrei(7));
 
 
 function callLater(attr, value){
@@ -69,4 +70,4 @@ var makeBlue = callLater('backgroundColor','#4285F4');
  */
 var header = document.getElementById('page-header');
 
-window.setTimeout('makeBlue(header)', 2000);
+window.setTimeout(function() {makeBlue(header)}, 2000);
