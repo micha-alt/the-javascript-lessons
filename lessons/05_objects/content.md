@@ -117,6 +117,3 @@ Eigenschaften. Die vorhandenen Eigenschaften fasst die Referenz
 
 Unter anderem ist das eine `constructor`-Property, die unsere Konstruktor-Funktion
 enthält, sowie zum Beispiel auch eine `toString`-Methode.
-
-Eine dieser Eigenschaften ist die `prototype`-Property, der wir uns im nächsten
-Abschnitt widmen.

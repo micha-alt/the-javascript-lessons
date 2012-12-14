@@ -9,3 +9,5 @@ Short tutorial on the JavaScript essentials.
 3. Functions
 4. Closures
 5. Objects
+6. Prototypes
+

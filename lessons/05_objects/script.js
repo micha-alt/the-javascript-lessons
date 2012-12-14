@@ -11,9 +11,7 @@ var javascript = {
 function Language( designer, created, influences ) {
 
     this.designer = designer;
-
     this.created = created;
-
     this.influences = influences;
 
     this.age = function() {
