@@ -65,7 +65,7 @@ Customer.prototype.isValid = function () {
         return this.email.match(/^\w+@\w+\.\w{2,4}$/);
     }
 
-    // let's make a closure
+    // let's make a reference to my method this
     var that = this;    // oft auch Variablenname self
     function checkMyEmail() {
         return that.email.match(/^\w+@\w+(\.\w{2,4})?$/);
