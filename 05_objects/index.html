@@ -19,14 +19,61 @@
         <a id="home_banner" href="http://micha-alt.github.com/the-javascript-lessons/">Home</a>
 
         <h1 id="project_title">Lesson 05: Objects</h1>
-
+        <section id="gist">
+            <a class="gist_link" href="https://github.com/micha-alt/the-javascript-lessons/zipball/master">Gist</a>
+        </section>
     </header>
 </div>
 
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
-        <h3>Überschrift</h3>
+        <h3>JavaScript und Objekte bzw. Klassen</h3>
+
+        <p>
+            Eine der ersten Hürden die ein erfahrener OO-Programmierer überwinden muss, ist das Fehlen des class Schlüsselwortes.
+            Man könnte vielleicht eine Trennlinie ziehen zwischen objekt-orientiertem Programmieren und einem neuen
+            Pendant klassen-orientierte Programmierung. Dabei lässt sich dann JavaScript bei Ersterem einordnen.
+
+            In JavaScript ist quasi alles ein Objekt. Das beinhaltet damit <code>String</code>,<code>Number</code>,
+            <code>Function</code>, <code>Array</code> und so weiter und natürlich das <code>Object</code> selbst.
+            Die Spezifikation sagt, dass ein String-Literal "on-the-fly" umgewandelt wird in ein String-Objekt, wenn ein
+            Eigenschaften- oder Methoden-Zugriff erfolgt. Objekte sind ganz allgemein zu verstehen als Sammlungen
+            von key-value Paaren (plus interne "Magie").
+
+            Klassen im Sinne der herkömmlichen Objekt-Orientierten Programmierung existieren wiederum gar nicht.
+            JavaScript verfolgt hier einen komplett anderen Ansatz, der uns zwingt, zunächst einmal die bekannte
+            OOP zu verlernen.
+        </p>
+
+        <h3>Creating Objects</h3>
+
+        <p>Ein JavaScript-Objekt können wir auf drei verschiedene Arten erzeugen:</p>
+
+        <ol>
+            <li>Objekt-Initialisierer</li>
+                <pre><code>
+    var c1 = {
+        nr: 1,
+        firstname: "Klaus",
+        lastname: "Lage"
+    };
+
+    var c2 = new Object({
+        nr: 1,
+        firstname: "Klaus",
+        lastname: "Lage"
+    });
+                </code></pre>
+            <li>Konstruktor - Funktion</li>
+                <pre><code>
+    var Article = function( nr, name ) {
+        this.nr = nr;
+        this.name = name;
+    }
+                </code></pre>
+            <li>Object.create - Methode</li>
+        </ol>
     </section>
 </div>
 
