@@ -1,4 +1,5 @@
 ---
+layout: slate
 title: Objects
 ---
 
