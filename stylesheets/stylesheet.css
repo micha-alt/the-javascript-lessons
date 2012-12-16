@@ -65,6 +65,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.sub-page {
+    background-color: #f2f2f2;
+}
+body.sub-page #main_content_wrap {
+    border-bottom: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   font-weight: 700;
@@ -292,6 +299,21 @@ Full-Width Styles
   border-bottom-right-radius: 2px;
 }
 
+#home_banner {
+    display: block;
+    position: absolute;
+    top:0;
+    right: 10px;
+    z-index: 10;
+    padding: 10px 30px;
+    color: #fff;
+    background-color: #0090ff;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
 #header_wrap {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
@@ -373,8 +395,6 @@ Full-Width Styles
 #footer_wrap {
   background: #212121;
 }
-
-
 
 /*******************************************************************************
 Small Device Styles
