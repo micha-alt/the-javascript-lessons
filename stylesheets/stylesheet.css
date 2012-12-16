@@ -305,7 +305,9 @@ Full-Width Styles
     top:0;
     right: 10px;
     z-index: 10;
-    padding: 10px 30px;
+    width: 140px;
+    text-align: center;
+    padding: 10px 0;
     color: #fff;
     background-color: #0090ff;
     font-weight: 700;
@@ -330,19 +332,29 @@ Full-Width Styles
     padding: 20px 10px;
 }
 
-#gist {
+#fiddle {
     display: block;
     position: absolute;
     top:60;
     right: 10px;
     z-index: 10;
-    padding: 10px 30px;
+    width: 140px;
+    text-align: center;
+    padding: 10px 0;
     color: #fff;
     background-color: #0090ff;
     font-weight: 700;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
+}
+.fiddle_link {
+    color: #fff;
+    display: block;
+    padding-left: 20px;
+    overflow: hidden;
+    background: url(../images/fiddle.png) no-repeat bottom left;
+    margin-left: 10px;
 }
 
 #project_title {
@@ -417,6 +429,7 @@ Full-Width Styles
 .sub-page ol li {
     font-size: 21px;
     font-weight: bold;
+    margin: 10px 0;
 }
 
 .sub-page pre {

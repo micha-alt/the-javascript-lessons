@@ -16,11 +16,11 @@
 <!-- HEADER -->
 <div id="header_wrap" class="outer">
     <header class="inner">
-        <a id="home_banner" href="http://micha-alt.github.com/the-javascript-lessons/">Home</a>
+        <a id="home_banner" href="../">Home</a>
 
         <h1 id="project_title">Lesson 05: Objects</h1>
-        <section id="gist">
-            <a class="gist_link" href="https://github.com/micha-alt/the-javascript-lessons/zipball/master">Gist</a>
+        <section id="fiddle">
+            <a class="fiddle_link" target="_blank" href="http://jsfiddle.net/michael_alt/CLqLL/">jsFiddle</a>
         </section>
     </header>
 </div>
@@ -34,13 +34,15 @@
             Eine der ersten Hürden die ein erfahrener OO-Programmierer überwinden muss, ist das Fehlen des class Schlüsselwortes.
             Man könnte vielleicht eine Trennlinie ziehen zwischen objekt-orientiertem Programmieren und einem neuen
             Pendant klassen-orientierte Programmierung. Dabei lässt sich dann JavaScript bei Ersterem einordnen.
-
+        </p>
+        <p>
             In JavaScript ist quasi alles ein Objekt. Das beinhaltet damit <code>String</code>,<code>Number</code>,
             <code>Function</code>, <code>Array</code> und so weiter und natürlich das <code>Object</code> selbst.
             Die Spezifikation sagt, dass ein String-Literal "on-the-fly" umgewandelt wird in ein String-Objekt, wenn ein
             Eigenschaften- oder Methoden-Zugriff erfolgt. Objekte sind ganz allgemein zu verstehen als Sammlungen
             von key-value Paaren (plus interne "Magie").
-
+        </p>
+        <p>
             Klassen im Sinne der herkömmlichen Objekt-Orientierten Programmierung existieren wiederum gar nicht.
             JavaScript verfolgt hier einen komplett anderen Ansatz, der uns zwingt, zunächst einmal die bekannte
             OOP zu verlernen.
@@ -48,34 +50,72 @@
 
         <h3>Creating Objects</h3>
 
-        <p>Ein JavaScript-Objekt können wir auf drei verschiedene Arten erzeugen:</p>
+        <p>Ein JavaScript-Objekt kann auf unterschiedlichste Weise erzeugt werden. Die Varianten können reduziert werden
+        auf:</p>
 
         <ol>
             <li>Objekt-Initialisierer</li>
-                <pre><code>
-    var c1 = {
-        nr: 1,
-        firstname: "Klaus",
-        lastname: "Lage"
-    };
-
-    var c2 = new Object({
-        nr: 1,
-        firstname: "Klaus",
-        lastname: "Lage"
-    });
-                </code></pre>
             <li>Konstruktor - Funktion</li>
-                <pre><code>
-    var Article = function( nr, name ) {
-        this.nr = nr;
-        this.name = name;
-    }
-                </code></pre>
             <li>Object.create - Methode</li>
         </ol>
+
+        <p>Beginnen wir mit dem Objekt-Initialisierer</p>
+            <pre><code>
+var e1 = {};
+
+var c1 = {
+    nr: 1,
+    firstname: "Klaus",
+    lastname: "Lage"
+};
+
+var c2 = new Object({
+    nr: 1,
+    firstname: "Klaus",
+    lastname: "Lage"
+});
+            </code></pre>
+
+        <h3>Eigenschaften</h3>
+        <p>
+            Properties können jederzeit definiert werden. Sowie bei der Definition als auch beim Abruf sind zwei syntaktische Varianten erlaubt:
+
+            <dl>
+                <dt>Punkt-Operator</dt>
+                <dd><pre><code>objekt.prop = value</code></pre></dd>
+                <dt>Array-Zugriff</dt>
+                <dd><pre><code>objekt["prop"] = value</code></pre></dd>
+            </dl>
+        </p>
+        <p>Bisher sehen unsere Objekte eher aus wie Datenstrukturen. Deswegen zum nächsten Schritt:</p>
+
+        <h3>Konstruktor-Funktionen</h3>
+
+            <pre><code>
+function Leer() {};
+var e2 = new Leer();
+
+var Article = function( nr, name ) {
+    this.nr = nr;
+    this.name = name;
+}
+var a1 = new Article(1, "Berliner Weiße");
+            </code></pre>
+
+        <p>Anmerkung: Konstruktor-Funktionen beginnen nach Konvention mit einem Großbuchstaben.</p>
+
+        <p>Aber was macht dieses <code>this</code> hier?</p>
+
+        <p>Zunächst ist <code>this</code> ein Verweis. Worauf this verweist entscheidet der Kontext:
+            <ul>
+                <li>Global: window (oder das global unter z.B. node)</li>
+                <li>In einer Funktion: ebenso diesen globalen Kontext (bzw. undefined falls wir uns im strict-Mode befinden).</li>
+                <li>In einem Konstruktor bzw. einer Methode(!): das Objekt.</li>
+            </ul>
+        </p>
     </section>
 </div>
-
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
