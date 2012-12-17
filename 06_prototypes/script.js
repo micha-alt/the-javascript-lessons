@@ -70,14 +70,9 @@ Customer.prototype.isValid = function () {
         return that.email.match(/^\w+@\w+(\.\w{2,4})?$/);
     }
 
-    if(
-        this.firstname && this.firstname.length > 0 &&
-            this.lastname && this.lastname.length > 0 &&
-            checkMyEmail()
-        )
-        return true;
-    else
-        return false;
+    return this.firstname && this.firstname.length > 0 &&
+        this.lastname && this.lastname.length > 0 &&
+        checkMyEmail();
 };
 
 var c2 = new Customer();

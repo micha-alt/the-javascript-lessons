@@ -25,3 +25,11 @@ var java = new Language('James Goslin',new Date(1991,0,1),['C++','Smalltalk']);
 console.log(javascript.designer);
 console.log(java.age());
 
+// Pattern
+function Customer(nr, name){
+    if(this === window){
+        return new Customer(nr, name);
+    }
+    this.nr = nr;
+    this.name = name;
+}

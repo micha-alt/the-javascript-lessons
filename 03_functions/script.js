@@ -7,7 +7,7 @@ var res = add(17,4);
 console.log(res);
 
 function sum () {
-    var summe = 0;
+    var i, summe = 0;
     for( i=0; i<arguments.length; i++) {
         summe += arguments[i];
     }
