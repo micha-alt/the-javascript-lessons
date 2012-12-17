@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>04 Closures - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 04: Closures</h1>
+        <section id="fiddle">
+            <a class="fiddle_link" target="_blank" href="http://jsfiddle.net/michael_alt/4Mcvy/">jsFiddle</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>Closures</h3>
+
+        <p>Zwei Vorbemerkungen zum Verständnis von Closures:</p>
+
+        <ol>
+            <li>Funktionen werden in/mit einem Variablen-Kontext ausgeführt.</li>
+            <li>In JavaScript können Sie innere Funktionen definieren, die den kompletten Kontext der äußeren Funktion "erben".</li>
+        </ol>
+
+        <p>Mehr über Scopes, Kontexte, Funktionen und Closures:
+            <a href="http://jibbering.com/faq/notes/closures/">Notes on JavaScript Closures</a></p>
+
+        <h4>Innere Funktion:</h4>
+
+<pre><code>
+function sum( array ) {
+
+    test = 10;                    // BAD, weil globale var
+    // (hier aber nur zur Abgrenzung (siehe summe in addToSumme)
+
+    var summe = 0;                // lokale Var
+    function addToSumme( val ) {
+        summe += val;               // keine neue globale Var!
+    }
+
+    array.forEach(addToSumme);
+
+    return summe;
+
+}
+</code></pre>
+
+        <h4>Closure:</h4>
+
+        <p><strong>Freie Defintion:</strong></p>
+
+        <ol>
+            <li>innere Funktion greift auf äußeren Scope (Funktion/Objekt) zu.</li>
+            <li>äußerer Block rückt die innere Funktion über return oder als Eigenschafts-Wert heraus.</li>
+        </ol>
+        <p>
+            Also gelangt der Scope der äußeren Umgebung (lokale Vars, Parameter) über seine
+            eigentliche Lebensdauer hinaus (quasi eingeschlossen in der inneren Funktion)
+            an die Außenwelt. Man nennt Closures auch Funktions-Abschlüsse.
+        </p>
+        <p><strong>Zitat (frei) aus der <a href="http://perldoc.perl.org/perlfaq7.html#What%27s-a-closure?">Perl FAQ</a>:</strong> Closure ist ein Begriff aus der Programmierung, der präzise definiert aber schwer zu beschreiben ist. :-)</p>
+
+        <p><strong>Zitat (Quelle vergessen)</strong>: Closure is a notion out of the Lisp world that says if you define an anonymous function in a particular lexical context, it pretends to run in that context even when it's called outside the context.</p>
+
+        <p><strong>Wikipedia:</strong> Als Closure oder Funktionsabschluss bezeichnet man eine Programmfunktion, die sich ihren Erstellungskontext „merkt“. Beim Aufruf kann die Funktion dann auf diesen zugreifen, selbst wenn der Kontext außerhalb der Funktion schon nicht mehr existiert.</p>
+
+        <p>Ein <em>formales</em> Beispiel:</p>
+
+<pre><code>
+function closureCreation(arg1){
+
+    var localVar = "Ergebnis: ";
+
+    function theClosure(innerArg){
+        return localVar + (innerArg * arg1);
+    }
+
+    return theClosure;
+
+}
+
+var globalVar = closureCreation(2);
+
+log(globalVar(4));
+
+var vielfacheVonDrei = closureCreation(3);
+
+log(vielfacheVonDrei(7));
+</code></pre>
+
+        <p>Und ein etwas sinnvolleres Beispiel:</p>
+
+<pre><code>
+function callLater(attr, value){
+
+    /* Return a reference to an anonymous inner function created
+       with a function expression */
+
+    return (function(elt){
+
+        /*
+           This inner function is to be executed with setTimeout.
+           And when it is executed it can read, and act upon, the
+           parameters passed to the outer function.
+        */
+
+        elt.style[attr] = value;
+
+    });
+
+}
+</code></pre>
+
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

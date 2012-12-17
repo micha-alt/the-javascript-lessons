@@ -4,6 +4,7 @@ function add( a, b ) {
 }
 
 var res = add(17,4);
+log(res);
 
 function sum () {
     var summe = 0;
@@ -11,9 +12,9 @@ function sum () {
         summe += arguments[i];
     }
     return summe;
-};
+}
 
-log("Ergebnis:",sum( 1,2,3));
+log("Ergebnis: " + sum( 1,2,3));
 
 log(add.length);
 log(add.apply(this, [ 23, 19 ]));

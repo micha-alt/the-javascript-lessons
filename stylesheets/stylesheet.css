@@ -426,12 +426,6 @@ Full-Width Styles
   background: #212121;
 }
 
-.sub-page ol li {
-    font-size: 21px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
 .sub-page pre {
     margin: 6px 0;
     padding: 0 10px;
