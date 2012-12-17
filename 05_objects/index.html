@@ -3,7 +3,6 @@
 
 <head>
     <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
@@ -60,7 +59,7 @@
         </ol>
 
         <p>Beginnen wir mit dem Objekt-Initialisierer</p>
-            <pre><code>
+        <pre><code>
 var e1 = {};
 
 var c1 = {
@@ -74,24 +73,24 @@ var c2 = new Object({
     firstname: "Klaus",
     lastname: "Lage"
 });
-            </code></pre>
+        </code></pre>
 
         <h3>Eigenschaften</h3>
         <p>
             Properties können jederzeit definiert werden. Sowie bei der Definition als auch beim Abruf sind zwei syntaktische Varianten erlaubt:
-
-            <dl>
-                <dt>Punkt-Operator</dt>
-                <dd><pre><code>objekt.prop = value</code></pre></dd>
-                <dt>Array-Zugriff</dt>
-                <dd><pre><code>objekt["prop"] = value</code></pre></dd>
-            </dl>
         </p>
+        <dl>
+            <dt>Punkt-Operator</dt>
+            <dd><pre><code>objekt.prop = value</code></pre></dd>
+            <dt>Array-Zugriff</dt>
+            <dd><pre><code>objekt["prop"] = value</code></pre></dd>
+        </dl>
+
         <p>Bisher sehen unsere Objekte eher aus wie Datenstrukturen. Deswegen zum nächsten Schritt:</p>
 
         <h3>Konstruktor-Funktionen</h3>
 
-            <pre><code>
+        <pre><code>
 function Leer() {};
 var e2 = new Leer();
 
@@ -100,18 +99,42 @@ var Article = function( nr, name ) {
     this.name = name;
 }
 var a1 = new Article(1, "Berliner Weiße");
-            </code></pre>
+        </code></pre>
 
         <p>Anmerkung: Konstruktor-Funktionen beginnen nach Konvention mit einem Großbuchstaben.</p>
 
         <p>Aber was macht dieses <code>this</code> hier?</p>
 
-        <p>Zunächst ist <code>this</code> ein Verweis. Worauf this verweist entscheidet der Kontext:
-            <ul>
-                <li>Global: window (oder das global unter z.B. node)</li>
-                <li>In einer Funktion: ebenso diesen globalen Kontext (bzw. undefined falls wir uns im strict-Mode befinden).</li>
-                <li>In einem Konstruktor bzw. einer Methode(!): das Objekt.</li>
-            </ul>
+        <p>Zunächst ist <code>this</code> ein Verweis. Worauf this verweist entscheidet der Kontext:</p>
+        <ul>
+            <li>Global: window (oder das global unter z.B. node)</li>
+            <li>In einer Funktion: ebenso diesen globalen Kontext (bzw. undefined falls wir uns im strict-Mode befinden).</li>
+            <li>In einem Konstruktor bzw. einer Methode(!): das Objekt.</li>
+        </ul>
+
+
+        <h3>Methoden</h3>
+
+        <p>
+            Wie sieht denn jetzt eine Methode aus? Die <a href="http://es5.github.com/#x4.3.27">Spezifikation</a> sagt:
+            <strong>Eine Methode ist eine Funktion die ein Wert einer Eigenschaft ist.</strong>
+        </p>
+        <pre><code>
+function Customer( id, firstname, lastname ) {
+    this.id = id;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.fullname = function () { return this.firstname +  " " + this.lastname };
+}
+        </code></pre>
+        <p>Natürlich lassen sich Methoden genau wie Properties auch dynamisch hinzufügen.</p>
+
+        <h3>Eigenschaften und Methoden des Object-Typs</h3>
+        <p>
+            Prinzipiell erzeugt also unsere Konstruktor-Funktion ein <code>Object</code> mit zusätzlichen Eigenschaften.
+            Die vorhandenen Eigenschaften fasst die <a href="http://es5.github.com/#x15.2.4">Referenz</a> zusammen. Unter anderem ist das eine
+            <code>constructor</code>-Property, die unsere Konstruktor-Funktion enthält,
+            sowie zum Beispiel auch eine <code>toString</code>-Methode.
         </p>
     </section>
 </div>

@@ -1,35 +1,27 @@
 
 // Objekt-Initialisierer
 
-var e1 = {};
-
-var c1 = {
-    nr: 1,
-    firstname: "Klaus",
-    lastname: "Lage"
+var javascript = {
+    designer: 'Brendan Eich',
+    created: new Date(1995,0,1),
+    influences: ['C','Java','Scheme']
 };
 
-var c2 = new Object({
-    nr: 1,
-    firstname: "Klaus",
-    lastname: "Lage"
-});
+// Konstruktor-Funktion
 
+function Language( designer, created, influences ) {
 
-// Konstruktor (-Funktion)
+    this.designer = designer;
+    this.created = created;
+    this.influences = influences;
 
-function Leer() {};
-var e2 = new Leer();
-
-var Article = function( nr, name ) {
-    this.nr = nr;
-    this.name = name;
+    this.age = function() {
+        return new Date().getFullYear() - this.created.getFullYear();
+    };
 }
-var a1 = new Article(1, "Berliner Weiße");
 
+var java = new Language('James Goslin',new Date(1991,0,1),['C++','Smalltalk']);
 
-
-
-
-
+log(javascript.designer);
+log(java.age());
 
