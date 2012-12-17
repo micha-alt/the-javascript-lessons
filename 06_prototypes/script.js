@@ -61,18 +61,18 @@ Customer.prototype.isValid = function () {
 
     // innere Funktion! Keine Methode!
     function checkEmail() {
-        return this.email.match(/^\w+@\w+\.\w{2,4}$/);
+        return this.email.match(/^\w+@\w+\.\w{2,4}$/) !== null;
     }
 
     // let's make a reference to my method this
     var that = this;    // oft auch Variablenname self
     function checkMyEmail() {
-        return that.email.match(/^\w+@\w+(\.\w{2,4})?$/);
+        return that.email.match(/^\w+@\w+(\.\w{2,4})?$/) !== null;
     }
 
-    return this.firstname && this.firstname.length > 0 &&
-        this.lastname && this.lastname.length > 0 &&
-        checkMyEmail();
+    return (this.firstname && this.firstname.length > 0) &&
+        (this.lastname && this.lastname.length > 0)
+        && checkMyEmail();
 };
 
 var c2 = new Customer();
