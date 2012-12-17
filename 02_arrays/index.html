@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>02 Arrays - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 02: Arrays</h1>
+        <section id="fiddle">
+            <a class="fiddle_link" target="_blank" href="http://jsfiddle.net/michael_alt/4dm24/">jsFiddle</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>Arrays</h3>
+
+        <p>Arrays können in JavaScript ebenfalls literal definiert werden.</p>
+
+        <pre><code>var primes = [ 2, 3, 5, 7, 11, 13 ];</code></pre>
+
+        <p>Arrays sind allerdings schon Objekte, können also ebenso über einen
+            Konstruktor-Aufruf erzeugt werden. Und verfügen dementsprechen über
+            Eigenschaften und Methoden wie push, pop, shift, unshift, join, indexOf, forEach, ...</p>
+
+        <p>Neben Arrays existieren weitere Standard-Typen, z.B.</p>
+
+        <ul><li>Date</li><li>RegExp</li></ul>
+
+        <p>und auch</p>
+
+        <ul><li>String</li><li>Number</li><li>Boolean</li></ul>
+
+        <p>Fragezeichen?</p>
+
+        <p>Beachte:</p>
+
+        <pre><code>
+console.log( 5 == new Number(5));
+console.log( 5 === new Number(5));
+        </code></pre>
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
