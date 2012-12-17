@@ -18,8 +18,8 @@
         <a id="home_banner" href="../index.html">Home</a>
 
         <h1 id="project_title">Lesson 06: Prototypes</h1>
-        <section id="fiddle">
-            <a class="fiddle_link" target="_blank" href="https://github.com/micha-alt/the-javascript-lessons/zipball/master">jsFiddle</a>
+        <section id="jsbin">
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/uximex/2/edit">jsBin</a>
         </section>
     </header>
 </div>
@@ -32,7 +32,7 @@
         <p>Wie wird nun in JavaScript Vererbung realisiert? Dazu zunächst eine
             gesonderte Betrachtung des sogenannten Prototyps.</p>
 
-        <h3>Der Prototyp</h3>
+        <h4>Der Prototyp</h4>
 
         <p>Zur Einführung betrachten wir nochmal folgenden bekannten Code. Nach Konvention
             haben wir eine Konstruktor-Funktion, Funktionen in JavaScript sind ebenso Objekte,
@@ -59,7 +59,9 @@ Customer.prototype.nr = 0;
 Customer.prototype.firstname = "";
 Customer.prototype.lastname = "";
 Customer.prototype.registerDate = undefined;
-Customer.prototype.fullname = function() { return this.firstname + " " + this.lastname };
+Customer.prototype.fullname = function() {
+    return this.firstname + " " + this.lastname
+};
 
 log(c1);
 </code></pre>
@@ -68,6 +70,17 @@ log(c1);
             zuweisen:</p>
 
 <pre><code>
+// und zum Vergleich
+function Product( nr, name ) {
+    this.nr = nr;
+    this.name = name;
+}
+
+console.log(Product.prototype);
+
+var p1 = new Product(1, "Berliner Pils");
+console.log(p1);
+
 Product.prototype = {
 
     nr: 0,
@@ -78,29 +91,36 @@ Product.prototype = {
         return this.name +  " (" + this.price + this.unit + ")"
     }
 };
+
+console.log(p1);
+
 </code></pre>
 
         <p>Selbstverständlich kann ich einem einzelnen Objekt (nicht Prototyp) weitere eigene dynamische
             Eigenschaften zuweisen; Erweiterungen/Änderungen des Prototyps wirken sich jedoch auf
             alle(!) Objekte aus, die mit diesem Prototyp erstellt wurden.</p>
 
-<pre><code>
-
-</code></pre>
         <p>Das Ersetzen des Prototypen durch einen neuen hat übrigens keine Auswirkungen
             auf die schon erzeugten Objekte; diese halten eine Referenz auf den bei ihrer
             Konstruktion gültigen Prototypen.</p>
 
         <p>Zur Beantwortung der auf(ge)kommen(d)en Fragen:</p>
 
-        <ol><li><p>Warum erbt c1 die Prototype-Eigenschaften (leer angelegt) und p1 (mit Konstruktor-Funktion
-            und zwei gesetzten Eigenschaften) nicht? (Merke: die Prototypen wurden jeweils
-            hinterher angelegt)</p></li><li><p>Warum wirkt sich die Prototyp-Änderung auf alle Objekte aus, es sei denn
-            die geänderte Eigenschaft war auf den Objekten schon explizit gesetzt?</p></li></ol>
+        <ol>
+            <li>
+                Warum erbt c1 die Prototype-Eigenschaften (leer angelegt), aber p1 (mit Konstruktor-Funktion
+            und zwei gesetzten Eigenschaften) nicht (Merke: die Prototypen wurden jeweils
+            hinterher angelegt)?
+            </li>
+            <li>
+                Warum wirkt sich die Prototyp-Änderung auf alle Objekte aus, es sei denn
+            die geänderte Eigenschaft war auf den Objekten schon explizit gesetzt?
+            </li>
+        </ol>
 
         <p>Bitte versuchen Sie sich selbst an der Lösung. Tipp: interne Objekt-Property <code>hasOwnProperty</code></p>
 
-        <h3>Methoden und Funktionen</h3>
+        <h4>Methoden und Funktionen</h4>
 
         <p>An dieser Stelle sei nochmal auf eine Besonderheit der Spezifikation im
             Zusammenhang mit Funktionen hingewiesen. Nochmal die Definition: <em>eine Methode
@@ -110,7 +130,25 @@ Product.prototype = {
         <p>In der Funktion zeigt <code>this</code> auf das globale Objekt (z.B. <code>window</code> im Browser),
             in der Methode auf das Objekt selbst (wie in Java ...). Demzufolge geht
             folgender Code schief:</p>
+<pre><code>
+Customer.prototype.email = "";
+Customer.prototype.isValid = function () {
 
+    // innere Funktion! Keine Methode!
+    function checkEmail() {
+        return this.email.match(/^\w+@\w+(\.\w{2,4})?$/);
+    }
+
+    if(
+        this.firstname && this.firstname.length > 0
+        && this.lastname && this.lastname.length > 0
+        && checkMyEmail()
+    )
+        return true;
+    else
+        return false;
+};
+</code></pre>
     </section>
 </div>
 <script type="text/javascript" src="../javascripts/main.js"></script>

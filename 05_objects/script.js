@@ -22,6 +22,6 @@ function Language( designer, created, influences ) {
 
 var java = new Language('James Goslin',new Date(1991,0,1),['C++','Smalltalk']);
 
-log(javascript.designer);
-log(java.age());
+console.log(javascript.designer);
+console.log(java.age());
 

@@ -305,7 +305,7 @@ Full-Width Styles
     top:0;
     right: 10px;
     z-index: 10;
-    width: 140px;
+    width: 100px;
     text-align: center;
     padding: 10px 0;
     color: #fff;
@@ -332,28 +332,27 @@ Full-Width Styles
     padding: 20px 10px;
 }
 
-#fiddle {
+#jsbin {
     display: block;
     position: absolute;
     top:60;
     right: 10px;
     z-index: 10;
-    width: 140px;
+    width: 100px;
     text-align: center;
     padding: 10px 0;
-    color: #fff;
-    background-color: #0090ff;
+    background-color: #eee;
     font-weight: 700;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
-.fiddle_link {
-    color: #fff;
+.jsbin_link {
+    color: #222;
     display: block;
     padding-left: 20px;
     overflow: hidden;
-    background: url(../images/fiddle.png) no-repeat bottom left;
+    background: url(../images/jsBin.png) no-repeat center left;
     margin-left: 10px;
 }
 
@@ -430,6 +429,16 @@ Full-Width Styles
     margin: 6px 0;
     padding: 0 10px;
 }
+
+#demo-rect {
+    background-color: #614121;
+    position: absolute;
+    top: 200px;
+    right: 40px;
+    height: 80px;
+    width: 80px;
+}
+
 /*******************************************************************************
 Small Device Styles
 *******************************************************************************/

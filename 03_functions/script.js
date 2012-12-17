@@ -4,7 +4,7 @@ function add( a, b ) {
 }
 
 var res = add(17,4);
-log(res);
+console.log(res);
 
 function sum () {
     var summe = 0;
@@ -14,8 +14,8 @@ function sum () {
     return summe;
 }
 
-log("Ergebnis: " + sum( 1,2,3));
+console.log("Ergebnis: " + sum( 1,2,3));
 
-log(add.length);
-log(add.apply(this, [ 23, 19 ]));
+console.log(add.length);
+console.log(add.apply(this, [ 23, 19 ]));
 

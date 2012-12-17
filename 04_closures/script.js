@@ -13,7 +13,7 @@ function sum( array ) {
     return summe;
 }
 
-log("Summe von 10, 20 und 30: " +  sum( [10, 20, 30] ));
+console.log("Summe von 10, 20 und 30: " +  sum( [10, 20, 30] ));
 
 function closureCreation(arg1){
 
@@ -31,11 +31,11 @@ function closureCreation(arg1){
 
 var globalVar = closureCreation(2);
 
-log(globalVar(4));
+console.log(globalVar(4));
 
 var vielfacheVonDrei = closureCreation(3);
 
-log(vielfacheVonDrei(7));
+console.log(vielfacheVonDrei(7));
 
 
 function callLater(attr, value){
@@ -59,12 +59,12 @@ function callLater(attr, value){
  function object is assigned to a local variable:-
  */
 var hide = callLater("display", "none");
-var makeBlue = callLater('background','#4285F4');
+var makeBlue = callLater('backgroundColor','#214161');
 
 /* Call the setTimeout function, passing the reference to the inner
  function assigned to the - functRef - variable as the first argument:-
  */
-var header = document.getElementById('header_wrap');
+var header = document.getElementById('demo-rect');
 
 window.setTimeout(function(){makeBlue(header)}, 2000);
 window.setTimeout(function(){hide(header)}, 5000);
