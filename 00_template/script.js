@@ -1,2 +1,0 @@
-
-log("Site output");
