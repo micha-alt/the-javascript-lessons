@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>08 Classic OO Concepts - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 08: Classic OO Concepts</h1>
+        <section id="jsbin">
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/ojozoh/3/edit">jsBin</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>08 Classic OO Concepts</h3>
+
+        <h4>Artikel:</h4>
+        <ul>
+            <li><a href="http://javascript.crockford.com/private.html">Douglas Crockford</a></li>
+            <li><a href="http://webreflection.blogspot.de/2008/04/natural-javascript-private-methods.html">Ohne Privilegierte Methoden</a></li>
+            <li><a href="http://phrogz.net/JS/classes/OOPinJS.html">Article on OOP in JS</a></li>
+        </ul>
+        <dl>
+            <dt>Private Member-Variablen</dt>
+            <dd>Erzeugt mit <code>var</code> im Objekt</dd>
+            <dt>Private Methoden</dt>
+            <dd>Definiert im Objekt (inline inside oder über <code>var</code>)</dd>
+            <dt>Privilegierte Methoden</dt>
+            <dd>Definiert im Objekt als klassische Methode über <code>this.method = ...</code></dd>
+            <dt>Public Member-Variablen</dt>
+            <dd>Definiert im Objekt als klassische Eigenschaft über <code>this.prop = ...</code></dd>
+            <dt>Public Methoden</dt>
+            <dd>Definiert im Prototyp (aber kein Zugriff auf private Member!)</dd>
+            <dt>Static Member</dt>
+            <dd>Definiert über <code>Klasse.Member</code></dd>
+        </dl>
+
+        <p><strong>Beispiel</strong></p>
+        <pre><code>
+function GiroKonto() {
+
+    // access to static member
+    this.constructor.maxNr++;
+
+    // private member
+    var nr = this.constructor.maxNr, stand = 0, dispo = 0;
+
+    // public member
+    this.inhaber = 0;
+
+    // private method
+    function checkNonNegative( value ) {
+        if( value < 0 ) {
+            console.error("Negative value not allowed.");
+            throw { name: "ArgumentException", message: "Negative values are not allowed. "};
+        }
+        return true;
+    }
+
+    // privilegierte Member
+    this.getNr = function() { return nr; };
+    this.getStand = function() { return stand; };
+    this.getDispo = function() { return dispo; };
+    this.setDispo = function(value) { checkNonNegative(value); dispo = value; };
+
+    this.einzahlen = function (betrag) {
+        stand += betrag;
+    }
+}
+
+// static member
+GiroKonto.maxNr = 0;
+
+// public methods
+GiroKonto.prototype.toString = function () {
+    return 'Konto: ' +  this.getNr() + ", Stand: " + this.getStand();
+}
+        </code></pre>
+
+        <h4>Links zu Exception-Handling</h4>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/throw">MDN: throw</a></li>
+            <li><a href="http://www.webreference.com/programming/javascript/rg32/index.html">JS exception handling</a></li>
+        </ul>
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
