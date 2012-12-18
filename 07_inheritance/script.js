@@ -35,6 +35,8 @@ function GiroKonto( nr ) {
 }
 
 GiroKonto.prototype = new Konto();
+//GiroKonto.prototype.constructor = GiroKonto;
+console.log('Giro wir erzeugt mit: ' + GiroKonto.prototype.constructor);
 
 var gk1 = new GiroKonto(1002);
 console.log(gk1);
