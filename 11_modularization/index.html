@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>11 Modularization - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 11: Modularization</h1>
+        <section id="jsbin">
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/ijaxok/7/edit">jsBin</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>Modularization</h3>
+        <p>
+            Ansätze zur Kapselung und Modularisierung
+        </p>
+        <ul>
+            <li><a href="http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/">Object Literals</a></li>
+            <li><a href="http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth">Module Pattern</a></li>
+            <li><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailnamespacing">Namespacing</a></li>
+            <li>AMD
+                <ul>
+                    <li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">API</a></li>
+                    <li><a href="http://requirejs.org/docs/whyamd.html">Article on AMD by require.js</a></li>
+                    <li><a href="http://addyosmani.com/writing-modular-js/">Article on AMD by Addy Osmani</a></li>
+                </ul>
+            </li>
+            <li><a href="http://www.commonjs.org/">On the server/desktop: CommonJS</a></li>
+            <li><a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules">ES Harmony</a></li>
+        </ul>
+
+        <p><strong>Module Pattern</strong></p>
+        <pre><code>
+var myNamespace = (function () {
+
+    var myPrivateVar, myPrivateMethod;
+
+    // A private counter variable
+    myPrivateVar = 0;
+
+    // A private function which logs any arguments
+        myPrivateMethod = function( foo ) {
+        console.log( foo );
+    };
+
+    return {
+
+        // A public variable
+        myPublicVar: "foo",
+
+        // A public function utilizing privates
+        myPublicFunction: function( bar ) {
+
+            // Increment our private counter
+            myPrivateVar++;
+
+            // Call our private method using bar
+            myPrivateMethod( bar );
+
+        }
+    };
+
+})();
+        </code></pre>
+        <p><strong>Revealing Module Pattern</strong></p>
+        <pre><code>
+var myRevealingModule = function () {
+
+    var privateVar = "Ben Cherry",
+    publicVar  = "Hey there!";
+
+    function privateFunction() {
+        console.log( "Name:" + privateVar );
+    }
+
+    function publicSetName( strName ) {
+        privateVar = strName;
+    }
+
+    function publicGetName() {
+        privateFunction();
+    }
+
+
+    // Reveal public pointers to
+    // private functions and properties
+
+    return {
+        setName: publicSetName,
+        greeting: publicVar,
+        getName: publicGetName
+    };
+
+}();
+
+myRevealingModule.setName( "Paul Kinlan" );
+        </code></pre>
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
