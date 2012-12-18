@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>09 ECMAScript 5 - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 09: ES5 Properties</h1>
+        <section id="jsbin">
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/ehixay/1/edit">jsBin</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>Überschrift</h3>
+
+        <h4>Articles</h4>
+        <ul>
+            <li><a href="http://ejohn.org/blog/ecmascript-5-objects-and-properties/">John Resig</a></li>
+            <li><a href="http://killdream.github.com/blog/2011/10/understanding-javascript-oop/">Understanding OOP</a></li>
+        </ul>
+
+        <h4>Erzeugung</h4>
+
+        <p>Leeres Objekt</p>
+        <pre><code>var k1 = Object.create(null);</code></pre>
+
+        <h4>Properties</h4>
+
+        <p>Bisher:</p>
+        <pre><code>
+k1.nr = 1;
+k1['stand'] = 0;
+        </code></pre>
+        <p>Neu (verbose):</p>
+        <pre><code>
+var cust = Object.create(null);
+Object.defineProperty(cust, 'first_name', {
+    value:    'Klaus'
+    , writable: true });
+
+Object.defineProperty(cust, 'last_name', {
+    value:    'Lage'
+    , writable: true });
+
+// () → String
+// Returns the full name of object.
+function get_full_name() {
+    return this.first_name + ' ' + this.last_name
+}
+
+// (new_name:String) → undefined
+// Sets the name components of the object, from a full name.
+function set_full_name(new_name) { var names
+    names = new_name.trim().split(/\s+/);
+    this.first_name = names[0] || '';
+    this.last_name  = names[1] || '';
+}
+
+Object.defineProperty(cust, 'name', {
+    get: get_full_name
+    , set: set_full_name
+    , configurable: true
+    , enumerable:   true
+    , writeable: true
+});
+        </code></pre>
+        <p>Neu (literal):</p>
+        <pre><code>
+var a = {
+    nr: 4711,
+    name: 'Berliner Weisse',
+    _preis: 0,
+    get preis() {return this._preis },
+    set preis(value) { if( value < 0) throw "Negativer Preis";  this._preis = value;}
+};
+        </code></pre>
+        <h4>Methoden</h4>
+        <p>Hier bleibt alles wie gehabt: Methoden werden definiert, indem wir einer Property eine
+        Funktionsreferenz zuweisen. Auch die <code>this</code>-Auflösung bleibt natürlich gleich.</p>
+        <p>Aufruf über:</p>
+        <ul>
+            <li>Als Methode: <code>obj.method()</code></li>
+            <li>Über apply bzw (besser) call: <code>func.apply(obj,args)</code></li>
+        </ul>
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
