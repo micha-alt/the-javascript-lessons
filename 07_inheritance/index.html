@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
 
-    <title>00 Template - The JavaScript Lessons</title>
+    <title>07 Vererbung - The JavaScript Lessons</title>
 </head>
 
 <body class="sub-page">
@@ -17,9 +17,9 @@
     <header class="inner">
         <a id="home_banner" href="../index.html">Home</a>
 
-        <h1 id="project_title">Lesson 00: Template</h1>
+        <h1 id="project_title">Lesson 07: Vererbung</h1>
         <section id="jsbin">
-            <a class="jsbin_link" target="_blank" href="http://jsbin.com/ewoniw/1/edit">jsBin</a>
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/uwuyig/1/edit">jsBin</a>
         </section>
     </header>
 </div>
@@ -27,11 +27,60 @@
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
-        <h3>Überschrift</h3>
-        <p>MDN Guide: <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain">Verbung mit der Prototype-Chain</a></p>
+        <h3>Vererbung</h3>
+        <p>MDN Guide: <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Inheritance_and_the_prototype_chain">Vererbung mit der Prototype-Chain</a></p>
 
+        <p>Zusammenfassend gilt für die OOP in JavaScript bisher: alle Objekte bestimmen ihre Eigenschaften und ihr
+        Verhalten selbst. Ein Prototyp kann als Vorlage bei der Konstruktion dienen. Er definiert aber in keinster
+        Weise einen Contract.</p>
+
+        <h4>Vererbung mit der Prototype-Chain</h4>
+
+        <p>ES5: <a href="http://es5.github.com/#x4.2.1">Prototype chain</a></p>
+
+        <p>Ein Prototype kann auf eine Instanz eines anderen Objektes gesetzt werden. Damit "erbt" ein Objekt
+        unserer Konstruktor-Funktion die Eigenschaften und Methoden jenes Objektes.</p>
+
+        <pre><code>
+
+            function Konto( nr ) {
+                this.nr = nr;
+                this.stand = 0.0;
+                console.log('Konto-Konstruktor');
+            }
+
+            Konto.prototype = {
+
+                einzahlen: function(betrag) {
+                    this.stand += betrag;
+                },
+                toString: function() {
+                    return "Konto " +  this.nr;
+                }
+            };
+
+            function GiroKonto( nr ) {
+                this.nr = nr;
+            }
+
+            GiroKonto.prototype = new Konto();
+
+            var gk1 = new GiroKonto(1002);
+            console.log(gk1);
+
+            console.log( "gk1 is GiroKonto: " + (gk1 instanceof GiroKonto));
+            console.log( "gk1 is Konto: " + (gk1 instanceof Konto));
+
+        </code></pre>
     <h4>Articles</h4>
-    <a href="http://www.coolpage.com/developer/javascript/Correct%20OOP%20for%20Javascript.html">Correct OOP for JS</a>
+    <ul>
+        <li><a href="http://www.coolpage.com/developer/javascript/Correct%20OOP%20for%20Javascript.html">Correct OOP for JS</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">MDN: apply</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/call">MDN: call</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/typeof">MDN: call</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/instanceof">MDN: call</a></li>
+    </ul>
+
     </section>
 </div>
 <script type="text/javascript" src="../javascripts/main.js"></script>
