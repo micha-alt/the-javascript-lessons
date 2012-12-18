@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name="description" content="The JavaScript Lessons : Some lessons on JavaScript" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>10 ES5 Inheritance - The JavaScript Lessons</title>
+</head>
+
+<body class="sub-page">
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="home_banner" href="../index.html">Home</a>
+
+        <h1 id="project_title">Lesson 10: ES5 Inheritance</h1>
+        <section id="jsbin">
+            <a class="jsbin_link" target="_blank" href="http://jsbin.com/utixaq/1/edit">jsBin</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h3>ECMAScript 5 Inheritance</h3>
+        <p>Rekapitulation: Vererbung in JavaScript dreht sich um die Klonen von Eigenschaften eines
+            bestehenden Objektes und dem dynamischen Erweitern des neuen Objekts. Das Ausgangsobjekt
+            nennt man den "Prototypen" (aber nicht verwechseln mit der <code>prototyp</code>-Property
+            einer Funktion. Ein solcher Prototyp ist nichts anderes als ein simples Objekt, das
+            seine Eigenschaften teilt (mit dem Klon) - als "Parent".
+        </p>
+        <p>Hierbei wird zunächst nichts kopiert, sondern JavaScript delegiert!</p>
+        <p><strong>Bisher:</strong></p>
+        <pre><code>
+BaseClass.count = 0;
+BaseClass.prototype = {
+    id: 0,
+    name: '',
+    toString: function() { return 'Base-Object ' + this.id }
+}
+
+function BaseClass () {
+    this.id = ++BaseClass.count;
+    console.log("BaseClass constructor")
+}
+
+SubClass.prototype = new BaseClass();
+SubClass.prototype.toString = function() { return 'Sub-Object ' + this.id }
+
+function SubClass () {
+    BaseClass.call(this);
+    console.log("SubClass constructor");
+}
+        </code></pre>
+        <p><strong>Neu:</strong></p>
+        <pre><code>
+BasisKlasse.count = 0;
+BasisKlasse.prototype = {
+    id: 0,
+    name: '',
+    toString: function() { return 'Basis-Objekt ' + this.id }
+}
+
+function BasisKlasse () {
+    this.id = ++BasisKlasse.count;
+    console.log("BasisKlasse Konstruktor")
+}
+
+KindKlasse.prototype = Object.create(BasisKlasse.prototype);
+KindKlasse.prototype.toString = function() { return 'Kind-Objekt ' + this.id }
+
+function KindKlasse () {
+    BasisKlasse.call(this);
+    console.log("SubClass Konstruktor");
+}
+        </code></pre>
+
+        <h4>Mehrfachvererbung</h4>
+        <p>JavaScript definiert keine direkten Weg, aber natürlich lässt sich ein solches Verhalten
+        "bauen". Ein Beispiel sind die
+            Mixins (<a href="http://killdream.github.com/blog/2011/10/understanding-javascript-oop/#sec-3-4">sieh hier</a>
+            Generell gilt: über kurz oder lang schreiben Sie sich eine eigene OO-Library.
+        </p>
+        <h4>Zweites Argument bei Object.create(): properties</h4>
+        <pre><code>
+Konto.count = 0;
+function Konto () {
+    this.id = ++Konto.count;
+    this.stand = 0;
+}
+
+Konto.prototype = Object.create(null,{
+    einzahlen: { value: function(betrag) { console.log(this.id); this.stand += betrag; } },
+    auszahlen: { value: function(betrag) { if(betrag > this.stand) return false; this.stand -= betrag; return true; }}
+});
+
+GiroKonto.prototype = Object.create(Konto.prototype, {
+    auszahlen: { value: function(betrag) { if(betrag > this.stand + this.dispo) return false; this.stand -= betrag; return true; }}
+});
+
+function GiroKonto() {
+    Konto.call(this);
+    this.dispo = 0;
+}
+
+var konto1 = new Konto();
+var giro1 = new GiroKonto();
+        </code></pre>
+        <h4>Links</h4>
+        <ul>
+            <li><a href="http://ejohn.org/blog/simple-javascript-inheritance/">A Inheritance pattern (John Resig)</a></li>
+            <li><a href="http://sgaul.de/2012/01/23/javascript-prototype-gegen-__proto__/">prototype vs __proto__</a></li>
+            <li><a href="http://i.imgur.com/IkxPv.png">Grafik 1: OO-Modell</a></li>
+            <li><a href="http://www.mollypages.org/misc/js.mp">Grafik 2: OO-Modell</a></li>
+            <li><a href="http://stackoverflow.com/questions/650764/how-does-proto-differ-from-constructor-prototype">Stackoverflow Discussion</a></li>
+            <li><a href="http://jsperf.com/object-create-null-iteration/2">Strange: Performance</a></li>
+        </ul>
+    </section>
+</div>
+<script type="text/javascript" src="../javascripts/main.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
